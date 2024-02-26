@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+	  <None Remove="Libraries\Sewoo_Android_1113" />
+	  <None Remove="Libraries\iminPrinterSDK-12_V1.2.0_2401251422" />
+  </ItemGroup>
+</Project>

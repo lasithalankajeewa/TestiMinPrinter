@@ -1,0 +1,101 @@
+﻿@page "/"
+@using TestiMinPrinter.Models
+
+<h1>Printer</h1>
+
+<input @bind-value="printerAddress" placeholder="Printer address"/>
+
+<button onclick="@ConnectPrinter">Connect</button>
+
+<button onclick="@ConnectPrinter">Test</button>
+
+
+@code {
+
+
+    private IJNIPrinter printer = null;
+
+    private string printerAddress = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+        printer = _nativePrinterFactory.LoadPrinter("Imin");
+    }
+
+    private async Task ConnectPrinter()
+    {
+        if (_detector.PlatformDetector().Equals("Android"))
+        {
+            CommunicationChannels channel = CommunicationChannels.BLUETOOTH;
+            printer = _nativePrinterFactory.LoadPrinter("Imin");
+            bool res1 = printer.InitializePrinter(22);
+
+            switch ("Bluetooth")
+            {
+                case "Bluetooth":
+                    channel = CommunicationChannels.BLUETOOTH;
+                    break;
+                case "USB":
+                    channel = CommunicationChannels.USB;
+                    break;
+                case "LAN":
+                    channel = CommunicationChannels.LAN;
+                    break;
+            }
+
+            bool res2 = printer.ConnectPrinter(channel, printerAddress);
+            if (!res1 && !res2)
+            {
+                //_snackBar.Add("Object Creation and Connection Failed!");
+                return;
+            }
+            else if (!res1)
+            {
+                //_snackBar.Add("Object Creation Failed!");
+                return;
+            }
+            else if (!res2)
+            {
+                //_snackBar.Add("Connection Failed!");
+                return;
+            }
+            //_snackBar.Add("Printer Connected Successful!");
+        }
+        else
+        {
+            //_snackBar.Add("This Platform Not Suppored!");
+        }
+
+
+
+    }
+
+    private async Task TestPrinter()
+    {
+        if (printer == null)
+        {
+           // _snackBar.Add("Printer Not Created!");
+        }
+        else
+        {
+            IList<PrintSDKDataObject> dataObjectTest = new List<PrintSDKDataObject>();
+            dataObjectTest.Add(new PrintSDKDataObject()
+                {
+                    itemType = "text-data",
+                    contentDetails = "This is Testing\n by Blue Lotus X\n",
+                    additionalparameters = new string[] { "CENTER", "ST-BOLD" }
+                });
+            dataObjectTest.Add(new PrintSDKDataObject()
+                {
+                    itemType = "qr-code",
+                    contentDetails = "https://www.bluelotus360.com",
+                    additionalparameters = new string[] { "CENTER" }
+                });
+            printer.ProcessDocumentAndPrint(dataObjectTest);
+            //_snackBar.Add("Printer In Queue");
+        }
+    }
+
+}

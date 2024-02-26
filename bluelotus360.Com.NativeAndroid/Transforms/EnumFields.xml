@@ -1,0 +1,35 @@
+﻿<enum-field-mappings>
+	<mapping jni-class="com/epson/epos2/printer/Printer" clr-enum-type="BlueLotus.Printing.Epson.Printer">
+		 printer models 
+		<field jni-name="TM_M10" clr-name="TM_M10" value="0" />
+		<field jni-name="TM_M30" clr-name="TM_M30" value="1" />
+		<field jni-name="TM_P20" clr-name="TM_P20" value="2" />
+		<field jni-name="TM_M30II" clr-name="TM_M30II" value="22" />
+		<field jni-name="TM_M55" clr-name="TM_M55" value="34" />
+	</mapping>
+	<mapping jni-class="com/epson/epos2/printer/CommonPrinter"  clr-enum-type="BlueLotus.Printing.Epson.Alignment">
+		 Text Alignments
+		<field jni-name="ALIGN_LEFT" clr-name="AlignLeft" value="0" />
+		<field jni-name="ALIGN_CENTER" clr-name="AlignCenter" value="1" />
+		<field jni-name="ALIGN_RIGHT" clr-name="AlignRight" value="2" />
+	</mapping>
+	<mapping jni-class="com/epson/epos2/printer/CommonPrinter"  clr-enum-type="BlueLotus.Printing.Epson.CommonPrinter">
+		 default parameter
+		<field jni-name="PARAM_DEFAULT" clr-name="PrinterDefault" value="0" />
+		 Printer fonts 
+		<field jni-name="FONT_A" clr-name="FontA" value="0" />
+		<field jni-name="FONT_B" clr-name="FontB" value="1" />
+		<field jni-name="FONT_C" clr-name="FontC" value="2" />
+		<field jni-name="FONT_D" clr-name="FontD" value="3" />
+		<field jni-name="FONT_E" clr-name="FontE" value="4" />
+		Boolean Constants
+		<field jni-name="TRUE" clr-name="PrinterTrue" value="1" />
+		<field jni-name="FALSE" clr-name="PrinterFalse" value="0" />
+		colors EPSON
+		<field jni-name="COLOR_NONE" clr-name="NoColor" value="0" />
+		<field jni-name="COLOR_1" clr-name="Color1" value="1" />
+		<field jni-name="COLOR_2" clr-name="Color2" value="2" />
+		<field jni-name="COLOR_3" clr-name="Color3" value="3" />
+		<field jni-name="COLOR_4" clr-name="Color4" value="4" />
+	</mapping>
+</enum-field-mappings>
